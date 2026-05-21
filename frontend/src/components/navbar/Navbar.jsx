@@ -4,10 +4,14 @@ import NavLinks from './NavLinks';
 import NavProfile from './NavProfile';
 import ThemeController from '../ThemeController';
 
+import Profile from '../auth/Profile';
+import Password from '../auth/Password';
+
 const Navbar = () => {
   const { userInfo } = useSelector((state) => state.user);
 
   return (
+    <>
     <nav className="navbar bg-base-100 shadow-sm px-4">
       {/* Left: hamburger menu for mobile */}
       <div className="navbar-start">
@@ -44,6 +48,9 @@ const Navbar = () => {
         )}
       </div>
     </nav>
+    {userInfo && <Profile user={userInfo} />}
+    {userInfo && <Password />}
+    </>
   );
 };
 export default Navbar;
