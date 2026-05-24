@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { clearCredentials } from '../../redux/features/userSlice';
+import { clearCredentials } from '../../redux/features/userSlices';
 import { useLogoutMutation } from '../../redux/api/usersApiSlice';
 import { useNavigate } from 'react-router-dom';
 

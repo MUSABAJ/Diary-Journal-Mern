@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useSignupMutation } from '../redux/api/usersApiSlice';
-import { setCredentials } from '../redux/features/userSlice';
+import { setCredentials } from '../redux/features/userSlices';
 
 const Signup = () => {
   const [form, setForm] = useState({ firstName: '', lastName: '', email: '', password: '' });

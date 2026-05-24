@@ -4,7 +4,7 @@ export const entriesApiSlice = apiSlice.injectEndpoints({
     endpoints: (builder) => ({
 
         getEntries: builder.query({
-            query: '/entries',
+            query: () => '/entries',
             providesTags: ['Entry']
         }),
     
@@ -21,7 +21,7 @@ export const entriesApiSlice = apiSlice.injectEndpoints({
             query: (data) => ({
             url: '/entries',
             method: 'POST',
-            data: data,
+            body: data,
             }),
             invalidatesTags: ["Entry"],
         }),

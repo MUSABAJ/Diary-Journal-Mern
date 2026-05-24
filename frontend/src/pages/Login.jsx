@@ -2,8 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLoginMutation } from '../redux/api/usersApiSlice';
-import { setCredentials } from '../redux/features/userSlice';
-
+import { setCredentials } from '../redux/features/userSlices';
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');

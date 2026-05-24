@@ -10,7 +10,7 @@ export const createEntry = async (req, res) => {
 
 // GET /api/entries
 export const getEntries = async (req, res) => {
-    const entries = (await Entry.find({user: req.user._id})).sort({date: -1})
+    const entries = await Entry.find({user: req.user._id}).sort({date: -1})
     res.json(entries)
 };
 

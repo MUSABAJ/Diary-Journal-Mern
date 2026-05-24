@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useUpdateEntryMutation } from '../../redux/api/entriesApiSlice';
+import { useUpdateEntryMutation } from '../../redux/api/entryApiSlice';
 import ModalLayout from '../ModalLayout';
 
 const MOODS = ['happy', 'sad', 'angry', 'anxious', 'calm', 'excited', 'neutral'];

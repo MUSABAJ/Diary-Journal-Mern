@@ -4,15 +4,15 @@ import User from '../models/userModel.js';
 
 export const getProfile = async (req, res) => {
   // req.user is already set by the protect middleware
-const {_id, firstName, lastName, email} = req.User;
-res.json({_id, firstName, lastName, email});
+  const {_id, firstName, lastName, email} = req.user;
+  res.json({_id, firstName, lastName, email});
 
 };
 
 // Put /api/users/me
 export const updateProfile = async (req, res) => {
     const user = await User.findById(req.user._id);
-
+    console.log(req.body)
     user.firstName = req.body.firstName || user.firstName;
     user.lastName = req.body.lastName || user.lastName;
     
@@ -20,9 +20,8 @@ export const updateProfile = async (req, res) => {
 
     res.json({
         _id:updated.id,
-        firstNmae: updated.firstName,
-        lastNmae: updated.lastName,
-        email: updated.email
-    });
-};
+        firstName: updated.firstName,
+        lastName: updated.lastName,
+     });
+}; 
 

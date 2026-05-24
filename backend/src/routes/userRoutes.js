@@ -4,7 +4,7 @@ import protect from '../middleware/authMiddleware.js';
 
 const router = express.Router();
 
-router.route('me')
+router.route('/me')
     .get(protect, getProfile)
     .put(protect, updateProfile)
 

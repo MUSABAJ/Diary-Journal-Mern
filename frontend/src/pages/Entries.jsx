@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useGetEntriesQuery, useSearchEntriesQuery } from '../redux/api/entriesApiSlice';
+import { useGetEntriesQuery, useSearchEntriesQuery } from '../redux/api/entryApiSlice';
 import EntryCard from '../components/entry/EntryCard';
 import AddEntry from '../components/entry/AddEntry';
 import Loader from '../components/Loader';

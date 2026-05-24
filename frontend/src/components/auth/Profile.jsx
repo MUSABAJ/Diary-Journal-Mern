@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useUpdateProfileMutation } from '../../redux/api/usersApiSlice';
-import { setCredentials } from '../../redux/features/userSlice';
+import { setCredentials } from '../../redux/features/userSlices';
 import ModalLayout from '../ModalLayout';
 
 const Profile = ({ user }) => {

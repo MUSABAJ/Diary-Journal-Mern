@@ -11,12 +11,12 @@ router.get('/search',protect, searchEntries);
 
 router.route('/')
   .post(protect, createEntry)
-  .get(protect, getEntries);
+  .get(protect, getEntries)
 
 router.route('/:id')
   .get(protect, getEntry)
   .patch(protect, updateEntry)
-  .delete(protect, deleteEntry);
+  .delete(protect, deleteEntry)
   
 export default router;
 

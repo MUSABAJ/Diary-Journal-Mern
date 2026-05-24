@@ -1,4 +1,4 @@
-import { useDeleteEntryMutation } from '../../redux/api/entriesApiSlice';
+import { useDeleteEntryMutation } from '../../redux/api/entryApiSlice';
 import ModalLayout from '../ModalLayout';
 
 const DeleteEntry = ({ entry, modalId }) => {
