@@ -5,11 +5,10 @@ const userSchema = new mongoose.Schema(
     {
     firstName: {type: String, required: true,  trim:true},
     lastName: {type: String, required: true,  trim:true},
-
-    // streak: {type: Int16Array, default: 0},
-
     email: {type: String, required: true, unique: true, lowercase: true,  trim:true},
     password: {type: String, required: true},
+
+    streak: {type: Number, required: false,default: 0},
     },  
     { timestamps: true }
 )

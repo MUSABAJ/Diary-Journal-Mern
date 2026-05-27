@@ -12,7 +12,10 @@ export const entriesApiSlice = apiSlice.injectEndpoints({
             query: (text) => `/entries/search?text=${text}`,
             providesTags: ['Entry']
         }),    
+        getStats: builder.query({
+            query: () => '/dashboard',
 
+        }),
         getEntry: builder.query({
             query: (id) => `/entries/${id}`,
                 providesTags: ['Entry']
@@ -54,5 +57,5 @@ export const {
   useCreateEntryMutation,
   useUpdateEntryMutation,
   useDeleteEntryMutation,
-  
+  useGetStatsQuery,
 } = entriesApiSlice;

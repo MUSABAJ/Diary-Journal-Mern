@@ -6,7 +6,8 @@ import connectDB from './config/database.js';
 import authRoutes from './routes/authRoutes.js';
 import userRoutes from './routes/userRoutes.js';
 import entryRoutes from './routes/entryRoutes.js';
-
+import settingsRoutes from './routes/settingsRoutes.js'
+import dashboardRoutes from './routes/dashboardRoutes.js'
 dotenv.config();
 connectDB();
 
@@ -26,6 +27,8 @@ app.use(cookieParser());       // Parse cookies so req.cookies.jwt works
 app.use('/api/auth', authRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/entries', entryRoutes);
+app.use('/api/dashboard', dashboardRoutes)
+app.use('/api/settings',settingsRoutes)
 app.get('/', (req, res) => {
   res.json({
     message: 'Journal API is running!',

@@ -31,46 +31,96 @@ const Login = () => {
     }
   };
 
-  return (
-    <div className="flex justify-center items-center min-h-[70vh]">
-      <div className="card bg-base-100 shadow-xl w-full max-w-sm">
-        <div className="card-body">
-          <h2 className="card-title text-2xl justify-center">Welcome back</h2>
+ return ( 
+  <div className="min-h-screen bg-[#f6f7fb] flex items-center justify-center px-6 py-10">
 
-          {isError && (
-            <div className="alert alert-error text-sm">
-              {error?.data?.message || 'Login failed'}
-            </div>
-          )}
+  <div className="w-full max-w-5xl bg-white rounded-2xl overflow-hidden shadow-lg grid grid-cols-1 lg:grid-cols-2">
 
-          <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-            <input
-              type="email"
-              placeholder="Email"
-              className="input input-bordered"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
-            <input
-              type="password"
-              placeholder="Password"
-              className="input input-bordered"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
-            <button type="submit" className="btn btn-primary" disabled={isLoading}>
-              {isLoading ? <span className="loading loading-spinner" /> : 'Login'}
-            </button>
-          </form>
+    {/* LEFT INFO */}
+    <div className="bg-[#1e1b3a] text-white p-10 lg:p-12 flex flex-col justify-between">
 
-          <p className="text-center text-sm mt-2">
-            No account? <Link to="/signup" className="link link-primary">Sign up</Link>
-          </p>
-        </div>
+      <div>
+        <h1 className="text-xl font-semibold">My Diary</h1>
+
+        <h2 className="text-3xl font-semibold mt-10">
+          Welcome back
+        </h2>
+
+        <p className="text-sm text-gray-300 mt-3 leading-relaxed">
+          Continue your journaling journey and keep track of your thoughts.
+        </p>
+      </div>
+
+      <div className="bg-white/5 border border-white/10 rounded-lg p-4 mt-10">
+        <p className="text-sm font-medium">
+          “Writing clears the mind more than thinking ever could.”
+        </p>
+        <p className="text-xs text-gray-300 mt-2">
+          Keep going — even short entries matter.
+        </p>
+      </div>
+
+    </div>
+
+    {/* RIGHT FORM */}
+    <div className="p-10 lg:p-12 flex flex-col justify-center">
+
+      <div className="max-w-sm mx-auto w-full">
+
+        <h2 className="text-2xl text-blue-950 font-semibold">
+          Sign in
+        </h2>
+
+        <p className="text-xs text-gray-400 mt-1 mb-8">
+          Enter your credentials
+        </p>
+
+        {isError && (
+          <div className="mb-4 text-xs text-red-500 bg-red-50 border border-red-100 p-2 rounded-md">
+            {error?.data?.message || 'Login failed'}
+          </div>
+        )}
+
+        <form onSubmit={handleSubmit} className="space-y-4">
+
+          <input
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            className="w-full px-4 py-2 text-sm text-blue-950 rounded-lg border border-gray-200 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-200"
+            required
+          />
+
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            className="w-full px-4 py-2 text-sm text-blue-950 rounded-lg border border-gray-200 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-200"
+            required
+          />
+
+          <button className="w-full py-2 text-sm rounded-lg bg-gray-900 text-white hover:opacity-90 transition">
+            {isLoading ? 'Loading...' : 'Login'}
+          </button>
+
+        </form>
+
+        <p className="text-center text-xs text-gray-400 mt-6">
+          Don’t have an account?{' '}
+          <Link to="/signup" className="text-gray-900 font-medium">
+            Sign up
+          </Link>
+        </p>
+
       </div>
     </div>
-  );
+
+  </div>
+</div>
+  
+  )
 };
 export default Login;
+ 

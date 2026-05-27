@@ -10,6 +10,7 @@ export const createEntry = async (req, res) => {
 
 // GET /api/entries
 export const getEntries = async (req, res) => {
+
     const entries = await Entry.find({user: req.user._id}).sort({date: -1})
     res.json(entries)
 };
@@ -20,7 +21,7 @@ export const searchEntries = async (req, res) => {
     const entries = await Entry.find({
         user: req.user._id,
         $or:[
-        {title: {$regex: text, $option: 'i'}},
+        {title: {$regex: text, $options: 'i'}},
         {content: {$regex: text, $options: 'i'}},
         ],
     }).sort({date:-1});
@@ -41,7 +42,7 @@ export const updateEntry = async (req, res) => {
 
     Object.assign(entry, req.body)  // merge only the fields sent
     const updated = await entry.save();
-    res.josn(updated);
+    res.json(updated);
 };
 
 // DELETE /api/entries/:id

@@ -28,36 +28,123 @@ const Signup = () => {
     }
   };
 
-  return (
-    <div className="flex justify-center items-center min-h-[70vh]">
-      <div className="card bg-base-100 shadow-xl w-full max-w-sm">
-        <div className="card-body">
-          <h2 className="card-title text-2xl justify-center">Create account</h2>
+  return ( 
+    <div className="min-h-screen bg-[#f6f7fb] flex items-center justify-center px-6 py-10">
 
-          {isError && (
-            <div className="alert alert-error text-sm">
-              {error?.data?.message || 'Signup failed'}
-            </div>
-          )}
+  <div className="w-full max-w-5xl bg-white rounded-2xl overflow-hidden shadow-lg grid grid-cols-1 lg:grid-cols-2">
 
-          <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-            <div className="flex gap-2">
-              <input name="firstName" placeholder="First name" className="input input-bordered flex-1" value={form.firstName} onChange={handleChange} required />
-              <input name="lastName"  placeholder="Last name"  className="input input-bordered flex-1" value={form.lastName}  onChange={handleChange} required />
-            </div>
-            <input name="email"    type="email"    placeholder="Email"    className="input input-bordered" value={form.email}    onChange={handleChange} required />
-            <input name="password" type="password" placeholder="Password" className="input input-bordered" value={form.password} onChange={handleChange} required />
-            <button type="submit" className="btn btn-primary" disabled={isLoading}>
-              {isLoading ? <span className="loading loading-spinner" /> : 'Sign Up'}
-            </button>
-          </form>
+    {/* LEFT FORM */}
+    <div className="p-10 lg:p-12 flex flex-col justify-center">
 
-          <p className="text-center text-sm mt-2">
-            Already have an account? <Link to="/login" className="link link-primary">Login</Link>
-          </p>
-        </div>
+      <div className="max-w-sm mx-auto w-full">
+
+        <h2 className="text-2xl font-semibold">
+          Create account
+        </h2>
+
+        <p className="text-xs text-gray-400 mt-1 mb-8">
+          Start your journaling journey
+        </p>
+
+        {isError && (
+          <div className="mb-4 text-xs text-red-500 bg-red-50 border border-red-100 p-2 rounded-md">
+            {error?.data?.message || 'Signup failed'}
+          </div>
+        )}
+
+        <form onSubmit={handleSubmit} className="space-y-4">
+
+          <input
+            type="text"
+            name="firstName"
+            placeholder="First name"
+            value={form.firstName}
+            onChange={handleChange}
+            className="w-full px-4 py-2 text-sm text-black rounded-lg border border-gray-200 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-200"
+            required
+          />
+
+          <input
+            type="text"
+            name="lastName"
+            placeholder="Last name"
+            value={form.lastName}
+            onChange={handleChange}
+            className="w-full px-4 py-2 text-sm text-black rounded-lg border border-gray-200 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-200"
+            required
+          />
+
+          <input
+            type="email"
+            name="email"
+            placeholder="Email"
+            value={form.email}
+            onChange={handleChange}
+            className="w-full px-4 py-2 text-sm text-black rounded-lg border border-gray-200 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-200"
+            required
+          />
+
+          <input
+            type="password"
+            name="password"
+            placeholder="Password"
+            value={form.password}
+            onChange={handleChange}
+            className="w-full px-4 py-2 text-sm text-black rounded-lg border border-gray-200 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-200"
+            required
+          />
+
+          <button className="w-full py-2 text-sm rounded-lg bg-gray-900 text-white hover:opacity-90 transition">
+            {isLoading ? 'Creating...' : 'Create account'}
+          </button>
+
+        </form>
+
+        <p className="text-center text-xs text-gray-400 mt-6">
+          Already have an account?{' '}
+          <Link to="/login" className="text-gray-900 font-medium">
+            Login
+          </Link>
+        </p>
+
       </div>
     </div>
-  );
+
+    {/* RIGHT SIDE */}
+    <div className="bg-[#1e1b3a] text-white p-10 lg:p-12 flex flex-col justify-between">
+
+      <div>
+        <h1 className="text-xl font-semibold">My Diary</h1>
+
+        <h2 className="text-3xl font-semibold mt-10">
+          Start writing your thoughts
+        </h2>
+
+        <p className="text-sm text-gray-300 mt-3 leading-relaxed">
+          A simple space to reflect, track emotions, and build a writing habit.
+        </p>
+      </div>
+
+      <div className="grid grid-cols-2 gap-3 mt-10 text-xs">
+
+        <div className="bg-white/5 border border-white/10 rounded-lg p-3">
+          <p className="font-semibold text-sm">Private</p>
+          <p className="text-gray-300 mt-1">Encrypted journal</p>
+        </div>
+
+        <div className="bg-white/5 border border-white/10 rounded-lg p-3">
+          <p className="font-semibold text-sm">Simple</p>
+          <p className="text-gray-300 mt-1">No distractions</p>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+    
+  )
 };
 export default Signup;
+
+ 
