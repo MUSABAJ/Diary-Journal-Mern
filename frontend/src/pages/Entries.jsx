@@ -169,10 +169,12 @@ const Entries = () => {
           Start writing your thoughts. Even messy ones count.
         </p>
 
-        <button className="mt-5 bg-gray-900 text-white px-4 py-2 text-xs rounded-lg">
-          Create entry
-        </button>
+        <Link to="/entries/create">
+            <button className="mt-5 bg-gray-900 text-white px-4 py-2 text-xs rounded-lg">
+              Create entry
 
+            </button>
+        </Link>
       </section>
     )}
 
