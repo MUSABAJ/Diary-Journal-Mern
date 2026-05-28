@@ -25,28 +25,36 @@ app.use(express.json());       // Parse JSON request bodies
 app.use(express.urlencoded({ extended: true })); // ← Optional: parses form data
 app.use(cookieParser());       // Parse cookies so req.cookies.jwt works
 
+// Production: Serve frontend first
+if (process.env.NODE_ENV === 'production'){
+  app.use(express.static(path.join(__dirname,"../frontend/dist")))
+}
+
 // Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/entries', entryRoutes);
 app.use('/api/dashboard', dashboardRoutes)
 app.use('/api/settings',settingsRoutes)
-app.get('/', (req, res) => {
-  res.json({
-    message: 'Journal API is running!',
-    version: '1.0.0',
-    endpoints: {
-      auth: '/api/auth',
-      entries: '/api/entries',
-      users: '/api/users'
-    },
-    documentation: 'Use Postman or your frontend to interact with the API'
+
+// Root API endpoint (development only)
+if (process.env.NODE_ENV !== 'production'){
+  app.get('/', (req, res) => {
+    res.json({
+      message: 'Journal API is running!',
+      version: '1.0.0',
+      endpoints: {
+        auth: '/api/auth',
+        entries: '/api/entries',
+        users: '/api/users'
+      },
+      documentation: 'Use Postman or your frontend to interact with the API'
+    });
   });
-});
+}
 
+// Catch-all: Serve frontend SPA
 if (process.env.NODE_ENV === 'production'){
-  app.use(express.static(path.join(__dirname,"../frontend/dist")))
-
   app.use((req, res) => {
     res.sendFile(path.join(__dirname,'../frontend', 'dist','index.html'))
   })
