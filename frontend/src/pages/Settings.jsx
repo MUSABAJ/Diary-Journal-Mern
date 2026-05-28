@@ -60,13 +60,13 @@ const handleLogout = async() => {
             <div className="flex-1 grid grid-cols-1 md:grid-cols-2 gap-4">
 
               <input
-                defaultValue="Musi"
+                defaultValue=""
                 placeholder="Full name"
                 className="px-3 py-2 text-sm rounded-lg bg-gray-50 border border-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
               />
 
               <input
-                defaultValue="musi@example.com"
+                defaultValue="email@example.com"
                 placeholder="Email"
                 className="px-3 py-2 text-sm rounded-lg bg-gray-50 border border-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
               />

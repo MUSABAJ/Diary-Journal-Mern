@@ -2,6 +2,7 @@ import express from 'express';
 import dotenv from 'dotenv';
 import cookieParser from 'cookie-parser';
 import cors from 'cors';
+import path from 'path'
 import connectDB from './config/database.js';
 import authRoutes from './routes/authRoutes.js';
 import userRoutes from './routes/userRoutes.js';
@@ -12,12 +13,13 @@ dotenv.config();
 connectDB();
 
 const app = express();
-
+const __dirname= path.resolve()
 // Middleware
+if (process.env.NODE_ENV !== 'production'){
 app.use(cors({
   origin: process.env.FRONTEND_URL || 'http://localhost:5000',
   credentials: true, // Required to send/receive cookies cross-origin
-}));
+}));}
 
 app.use(express.json());       // Parse JSON request bodies
 app.use(express.urlencoded({ extended: true })); // ← Optional: parses form data
@@ -41,5 +43,15 @@ app.get('/', (req, res) => {
     documentation: 'Use Postman or your frontend to interact with the API'
   });
 });
+
+if (process.env.NODE_ENV === 'production'){
+  app.use(express.static(path.join(__dirname,"../frontend/dist")))
+
+app.get("*",(req, res) => {
+  res.sendFIle(path.join(__dirname,'../frontend', 'dist','index.html'))
+})
+}
+
+
 const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

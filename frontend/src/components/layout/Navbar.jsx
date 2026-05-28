@@ -5,7 +5,7 @@ const Navbar = () => {
   return (
     <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 mb-8">
       <div>
-        <h2 className="text-4xl font-bold mb-2">Hello, Musi </h2>
+        <h2 className="text-4xl font-bold mb-2">Hello, there! </h2>
 
         <p className="text-gray-500 text-lg">
           Here’s your journaling overview for today.
